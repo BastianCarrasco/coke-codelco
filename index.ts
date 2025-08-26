@@ -12,7 +12,7 @@ const app = new Elysia();
 // Para producción, se recomienda restringir a los dominios específicos de tu frontend.
 app.use(
   cors({
-    origin: "*", // <--- CAMBIO AQUÍ: Usa '*' para permitir CUALQUIER origen.
+    origin: "true", // <--- CAMBIO AQUÍ: Usa '*' para permitir CUALQUIER origen.
     // Alternativamente, puedes usar `origin: true` que también funciona
     // para permitir el origen de la solicitud entrante.
     methods: ["GET", "PUT", "POST", "DELETE"], // Permite estos métodos
