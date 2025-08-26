@@ -6,14 +6,18 @@ import { excelPlugin } from "./src/excel-plugin"; // Importa tu plugin de Excel
 
 const app = new Elysia();
 
-// 1. Habilitar CORS (¡MUY IMPORTANTE para el Frontend!)
-// Configura 'origin' a '*' si quieres permitir cualquier origen (solo para desarrollo/pruebas)
-// En producción, es mejor especificar los dominios exactos de tu frontend.
+// 1. Habilitar CORS (¡Ahora completamente genérico!)
+// Esto permitirá solicitudes desde CUALQUIER origen.
+// Ideal para desarrollo/pruebas o APIs públicas sin restricciones de origen.
+// Para producción, se recomienda restringir a los dominios específicos de tu frontend.
 app.use(
   cors({
-    origin: true, // Permite el origen de la solicitud actual
+    origin: "*", // <--- CAMBIO AQUÍ: Usa '*' para permitir CUALQUIER origen.
+    // Alternativamente, puedes usar `origin: true` que también funciona
+    // para permitir el origen de la solicitud entrante.
     methods: ["GET", "PUT", "POST", "DELETE"], // Permite estos métodos
     allowedHeaders: ["Content-Type", "Authorization"], // Permite estos encabezados
+    credentials: true, // Si necesitas enviar cookies o encabezados de autorización en peticiones cross-origin
   })
 );
 
